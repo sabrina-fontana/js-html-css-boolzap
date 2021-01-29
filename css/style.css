@@ -2,12 +2,14 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 
 #root {
   background-image: linear-gradient(
   180deg
   ,#dddbd1,#d2dbdc);
+  width: 100%;
   position: fixed;
 }
 
@@ -25,10 +27,8 @@
   width: 85%;
   min-width: 950px;
   height: 95vh;
-  min-height: 150px;
   margin: 2.5vh auto;
   background-color: red;
-  border: 1px solid black;
   display: flex;
 }
 
@@ -36,66 +36,99 @@
   width: 35%;
   height: 100%;
   background-color: pink;
-  border: 1px solid black;
+  border-right: 2px solid #cecece;
 }
 
-.user-section {
+.user-section, .friend-section {
   width: 100%;
-  height: 80px;
-  background-color: grey;
-  border: 1px solid black;
+  height: 70px;
+  padding: 12px 0 12px 12px;
+  background-color: #eaeaea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-icons span, .friend-icons span {
+  display: inline-block;
+  color: #b1b1b1;
+  width: 30px;
+  height: 30px;
+  font-size: 26px;
+  margin-left: 8px;
+  cursor: pointer;
 }
 
 .notification-message {
   width: 100%;
-  height: 100px;
-  background-color: red;
-  border: 1px solid black;
+  height: 90px;
+  background-color: #8edafc;
 }
 
 .search-friend {
   width: 100%;
-  height: 70px;
-  background-color: green;
-  border: 1px solid black;
+  height: 50px;
+  background-color: #eaeaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-friend input {
+  width: 95%;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
 }
 
 .friends-list {
   width: 100%;
-  background-color: lightblue;
-  border: 1px solid black;
-  height: calc(100% - 80px - 100px - 70px);
+  height: calc(100% - 210px);
+  background-color: white;
   overflow-y: auto;
 }
 
 .chat-container {
   width: 65%;
   height: 100%;
+  min-height: 210px;
   background-color: green;
-  border: 1px solid black;
   position: relative;
-}
-
-.friend-section {
-  width: 100%;
-  height: 80px;
-  background-color: grey;
-  border: 1px solid black;
 }
 
 .main-chat {
   width: 100%;
-  background-color: yellow;
-  border: 1px solid black;
-  height: calc(100% - 80px - 80px);
-  overflow-y: auto;
+  background-image: url(../img/mine.jpg);
+  height: calc(100% - 70px - 70px);
+  overflow-y: scroll;
 }
 
 .chat-text {
-  height: 80px;
+  height: 70px;
   width: 100%;
-  background-color: blue;
-  border: 1px solid black;
+  background-color: #eaeaea;
   position: absolute;
   bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+
+.chat-text span {
+  display: inline-block;
+  color: #6d7275;
+  width: 30px;
+  height: 30px;
+  font-size: 26px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.chat-text input {
+  width: 85%;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1.5px solid #6d7275;
+
 }
