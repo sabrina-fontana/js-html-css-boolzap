@@ -18,22 +18,31 @@
         <!-- sidebar -->
         <div class="sidebar">
           <div class="user-section">
-            <div class="user-name">
-              Nome Utente
+            <div class="user-name bold">
+              <img class="avatar-img" src="img/avatar_io.jpg" alt="">
+              <div>Nome Utente</div>
             </div>
-            <div class="user-icons">
+            <div class="icons">
               <span><i class="fa fa-circle-o-notch" aria-hidden="true"></i></span>
               <span><i class="fa fa-comment" aria-hidden="true"></i></span>
               <span><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
             </div>
           </div>
           <div class="notification-message">
-            ciao
+            <span><i class="fa fa-bell-slash" aria-hidden="true"></i></span>
+            <div>
+              <div class="text bold">Ricevi notifiche di nuovi messaggi</div>
+              <div class="small-text"><u>Attiva notifiche desktop</u></div>
+            </div>
           </div>
           <div class="search-friend">
             <input type="text" placeholder="Cerca o inizia una nuova chat">
           </div>
           <div class="friends-list">
+            <div class="friend bold" v-for="contact in contacts">
+              <img class="avatar-img" :src="'img/avatar' + contact.avatar + '.jpg'" alt="">
+              {{contact.name}}
+            </div>
           </div>
 
         </div>
@@ -41,10 +50,13 @@
         <div class="chat-container">
 
           <div class="friend-section">
-            <div class="friend-name">
-              Nome Utente
+            <div class="friend-name bold">
+              <img class="avatar-img" src="img/avatar_io.jpg" alt="">
+              <div>Michele
+                <div class="small-text">Ultimo accesso oggi alle</div>
+              </div>
             </div>
-            <div class="friend-icons">
+            <div class="icons">
               <span><i class="fa fa-search" aria-hidden="true"></i></span>
               <span><i class="fa fa-paperclip" aria-hidden="true"></i></span>
               <span><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
@@ -52,6 +64,12 @@
           </div>
 
           <div class="main-chat">
+            <div class="user-message">Messaggio utente
+              <div class="timestamp">15:53</div>
+            </div>
+            <div class="friend-message">Messaggio amico 
+              <div class="timestamp">15:53</div>
+            </div>
           </div>
 
           <div class="chat-text">
