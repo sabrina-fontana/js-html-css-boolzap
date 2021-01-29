@@ -16,21 +16,10 @@
 }
 
 #root {
-  background-image: linear-gradient(
-  180deg
-  ,#dddbd1,#d2dbdc);
+  background: linear-gradient(to bottom, #009788 20%, #dbdbd1 20%, #dddbd2, #d2dbdc);
   width: 100%;
+  /* An element with position: fixed; is positioned relative to the viewport*/
   position: fixed;
-}
-
-#root::before {
-  background: #05978a;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 130px;
-  content: "";
-  z-index: -1;
 }
 
 .app-container {
@@ -58,12 +47,10 @@
 
 .sidebar {
   width: 35%;
-  height: 100%;
   border-right: 2px solid #cecece;
 }
 
 .user-section, .friend-section {
-  width: 100%;
   height: 70px;
   padding: 12px 0 12px 12px;
   background-color: #eaeaea;
@@ -98,7 +85,6 @@
 }
 
 .notification-message {
-  width: 100%;
   height: 90px;
   background-color: #8edafc;
   display: flex;
@@ -127,7 +113,6 @@
 }
 
 .search-friend {
-  width: 100%;
   height: 50px;
   background-color: #eaeaea;
   display: flex;
@@ -143,7 +128,6 @@
 }
 
 .friends-list {
-  width: 100%;
   height: calc(100% - 210px);
   background-color: white;
   overflow-y: auto;
@@ -163,13 +147,11 @@
 
 .chat-container {
   width: 65%;
-  height: 100%;
   min-height: 210px;
   position: relative;
 }
 
 .main-chat {
-  width: 100%;
   background-image: url(../img/mine.jpg);
   height: calc(100% - 70px - 70px);
   overflow-y: auto;
@@ -230,5 +212,4 @@
   padding: 12px;
   border-radius: 5px;
   border: 1.5px solid #6d7275;
-
 }
