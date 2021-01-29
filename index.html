@@ -39,7 +39,7 @@
             <input type="text" placeholder="Cerca o inizia una nuova chat">
           </div>
           <div class="friends-list">
-            <div class="friend bold" v-for="contact in contacts">
+            <div class="friend bold" v-for="(contact, index) in contacts" @click="changeChat(index)">
               <img class="avatar-img" :src="'img/avatar' + contact.avatar + '.jpg'" alt="">
               {{contact.name}}
             </div>
@@ -51,8 +51,8 @@
 
           <div class="friend-section">
             <div class="friend-name bold">
-              <img class="avatar-img" src="img/avatar_1.jpg" alt="">
-              <div>Michele
+              <img class="avatar-img" :src="'img/avatar' + contacts[currentContactIndex].avatar + '.jpg'" alt="">
+              <div>{{contacts[currentContactIndex].name}}
                 <div class="small-text">Ultimo accesso oggi alle</div>
               </div>
             </div>
