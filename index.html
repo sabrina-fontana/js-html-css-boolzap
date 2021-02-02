@@ -53,7 +53,7 @@
             <div class="friend-name bold">
               <img class="avatar-img" :src="'img/avatar' + contacts[currentContactIndex].avatar + '.jpg'" alt="">
               <div>{{contacts[currentContactIndex].name}}
-                <div class="small-text">Ultimo accesso oggi alle </div>
+                <div class="small-text">Ultimo accesso {{lastAccess(currentContactIndex)}}</div>
               </div>
             </div>
             <div class="icons">

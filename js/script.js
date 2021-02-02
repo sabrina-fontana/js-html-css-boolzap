@@ -95,18 +95,24 @@ methods: {
     this.currentContactIndex = index;
   },
   sendMessage: function() {
-    var date = new Date().toLocaleString('en-GB', { timeZone:'UTC'});
-    var newMessage = {date: date, text: this.message, status: 'sent'};
+    let date = new Date().toLocaleString('en-GB', { timeZone:'UTC'});
+    const newMessage = {date: date, text: this.message, status: 'sent'};
     this.contacts[this.currentContactIndex].messages.push(newMessage);
     this.message= '';
-    var contacts = this.contacts;
-    var currentIndex = this.currentContactIndex;
+    const contacts = this.contacts;
+    const currentIndex = this.currentContactIndex;
     setTimeout(function() {
       // riassegno a date il valore aggiornato (altrimenti resta indietro di 1000ms)
       date = new Date().toLocaleString('en-GB', { timeZone:'UTC'});
-       var responseMessage = {date: date, text: 'ok', status: 'received'};
+       const responseMessage = {date: date, text: 'ok', status: 'received'};
        contacts[currentIndex].messages.push(responseMessage);
      }, 1000);
+  },
+  lastAccess: function(index) {
+    // messaggi del contatto attivo (currentContactIndex)
+    const messages = this.contacts[index].messages;
+    // ritorna la data dell'ultimo messaggio
+    return messages[messages.length - 1].date;
   }
 }
 });
