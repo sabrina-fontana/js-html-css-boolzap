@@ -4,7 +4,6 @@ data: {
     currentContactIndex: 0,
     friendName: '',
     message: '',
-    allMessages: [],
     contacts: [
   	{
   		name: 'Michele',
@@ -96,7 +95,9 @@ methods: {
     this.currentContactIndex = index;
   },
   sendMessage: function() {
-    this.allMessages.push(this.message);
+    var d = new Date();
+    var newMessage = {date: d.toLocaleString('en-GB', { timeZone: 'UTC' }), text: this.message, status: 'sent'};
+    this.contacts[this.currentContactIndex].messages.push(newMessage);
     this.message= '';
   }
 }
