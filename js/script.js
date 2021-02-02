@@ -98,15 +98,26 @@ methods: {
     let date = new Date().toLocaleString('en-GB', { timeZone:'UTC'});
     const newMessage = {date: date, text: this.message, status: 'sent'};
     this.contacts[this.currentContactIndex].messages.push(newMessage);
-    this.message= '';
     const contacts = this.contacts;
     const currentIndex = this.currentContactIndex;
+    const message = this.message;
     setTimeout(function() {
       // riassegno a date il valore aggiornato (altrimenti resta indietro di 1000ms)
       date = new Date().toLocaleString('en-GB', { timeZone:'UTC'});
-       const responseMessage = {date: date, text: 'ok', status: 'received'};
+      function responseText() {
+        if (message.includes('ciao')) {
+          return 'ciao'
+        } else if (message.includes('?')) {
+          return 'Non lo so'
+        } else {
+          return 'ok'
+        }
+      };
+       const responseMessage = {date: date, text: responseText(), status: 'received'};
        contacts[currentIndex].messages.push(responseMessage);
      }, 1000);
+    
+     this.message= '';
   },
   lastAccess: function(index) {
     // messaggi del contatto attivo (currentContactIndex)
