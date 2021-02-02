@@ -95,10 +95,18 @@ methods: {
     this.currentContactIndex = index;
   },
   sendMessage: function() {
-    var d = new Date();
-    var newMessage = {date: d.toLocaleString('en-GB', { timeZone: 'UTC' }), text: this.message, status: 'sent'};
+    var date = new Date().toLocaleString('en-GB', { timeZone:'UTC'});
+    var newMessage = {date: date, text: this.message, status: 'sent'};
     this.contacts[this.currentContactIndex].messages.push(newMessage);
     this.message= '';
+    var contacts = this.contacts;
+    var currentIndex = this.currentContactIndex;
+    setTimeout(function() {
+      // riassegno a date il valore aggiornato (altrimenti resta indietro di 1000ms)
+      date = new Date().toLocaleString('en-GB', { timeZone:'UTC'});
+       var responseMessage = {date: date, text: 'ok', status: 'received'};
+       contacts[currentIndex].messages.push(responseMessage);
+     }, 1000);
   }
 }
 });
