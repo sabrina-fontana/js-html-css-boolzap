@@ -116,7 +116,7 @@ methods: {
        const responseMessage = {date: date, text: responseText(), status: 'received'};
        contacts[currentIndex].messages.push(responseMessage);
      }, 1000);
-    
+
      this.message= '';
   },
   lastAccess: function(index) {
@@ -124,6 +124,14 @@ methods: {
     const messages = this.contacts[index].messages;
     // ritorna la data dell'ultimo messaggio
     return messages[messages.length - 1].date;
+  },
+  searchFriend: function() {
+    this.contacts.forEach((element, index) => {
+      if (this.friendName.toLowerCase() === element.name.toLowerCase()) {
+        this.currentContactIndex = index;
+      }
+    });
+    this.friendName = '';
   }
 }
 });

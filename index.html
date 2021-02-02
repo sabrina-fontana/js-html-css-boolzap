@@ -17,6 +17,7 @@
 
         <!-- sidebar -->
         <div class="sidebar">
+
           <div class="user-section">
             <div class="user-name bold">
               <img class="avatar-img" src="img/avatar_io.jpg" alt="">
@@ -28,6 +29,7 @@
               <span><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
             </div>
           </div>
+
           <div class="notification-message">
             <span><i class="fa fa-bell-slash" aria-hidden="true"></i></span>
             <div>
@@ -35,8 +37,9 @@
               <div class="small-text"><u>Attiva notifiche desktop</u></div>
             </div>
           </div>
+
           <div class="search-friend">
-            <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="friendName" @keyup.enter="">
+            <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="friendName" @keyup.enter="searchFriend">
           </div>
           <div class="friends-list">
             <div class="friend bold" v-for="(contact, index) in contacts" @click="changeChat(index)">
