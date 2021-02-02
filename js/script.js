@@ -2,6 +2,9 @@ var app = new Vue({
 el: '#root',
 data: {
     currentContactIndex: 0,
+    friendName: '',
+    message: '',
+    allMessages: [],
     contacts: [
   	{
   		name: 'Michele',
@@ -91,6 +94,10 @@ data: {
 methods: {
   changeChat: function(index) {
     this.currentContactIndex = index;
+  },
+  sendMessage: function() {
+    this.allMessages.push(this.message);
+    this.message= '';
   }
 }
 });

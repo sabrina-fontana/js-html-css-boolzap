@@ -157,34 +157,34 @@
   background-image: url(../img/mine.jpg);
   height: calc(100% - 70px - 70px);
   overflow-y: scroll;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-message, .friend-message {
+  word-wrap: break-word;
+  border-radius: 10px;
+  padding: 8px 8px 4px 8px;
+  min-width: 150px;
+  max-width: 500px;
+  margin: 8px 15px 8px auto;
 }
 
 .user-message {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
   background-color: #d8febd;
-  border-radius: 10px;
-  padding: 8px 8px 4px 8px;
-  max-width: 500px;
+  margin: 8px 15px 8px auto;
+}
+
+.friend-message {
+  background-color: white;
+  margin: 8px auto 8px 15px;
 }
 
 .timestamp {
   color: #6d7275;
-  font-size: 11px;
+  font-size: 10px;
   text-align: right;
   padding-top: 4px;
-}
-
-.friend-message {
-  position: absolute;
-  left: 20px;
-  bottom: 80px;
-  background-color: white;
-  border-radius: 10px;
-  padding: 8px 8px 4px 8px;
-  max-width: 500px;
 }
 
 .chat-text {

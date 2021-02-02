@@ -36,7 +36,7 @@
             </div>
           </div>
           <div class="search-friend">
-            <input type="text" placeholder="Cerca o inizia una nuova chat">
+            <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="friendName" @keyup.enter="">
           </div>
           <div class="friends-list">
             <div class="friend bold" v-for="(contact, index) in contacts" @click="changeChat(index)">
@@ -53,7 +53,7 @@
             <div class="friend-name bold">
               <img class="avatar-img" :src="'img/avatar' + contacts[currentContactIndex].avatar + '.jpg'" alt="">
               <div>{{contacts[currentContactIndex].name}}
-                <div class="small-text">Ultimo accesso oggi alle</div>
+                <div class="small-text">Ultimo accesso oggi alle </div>
               </div>
             </div>
             <div class="icons">
@@ -64,17 +64,18 @@
           </div>
 
           <div class="main-chat">
-            <div class="user-message">Messaggio utente
-              <div class="timestamp">15:53</div>
+            <!-- un div per ogni messaggio del contatto con il currentContactIndex -->
+            <!-- classe user-message se il messaggio è inviato, classe friend-message se il messaggio è ricevuto -->
+            <div v-for="message in contacts[currentContactIndex].messages" :class="message.status === 'sent' ? 'user-message' : 'friend-message'">
+              {{message.text}}
+              <div class="timestamp">{{message.date}}</div>
             </div>
-            <div class="friend-message">Messaggio amico
-              <div class="timestamp">15:53</div>
-            </div>
+
           </div>
 
           <div class="chat-text">
             <span><i class="fa fa-smile-o" aria-hidden="true"></i></span>
-            <input type="text" placeholder="Scrivi un messaggio">
+            <input type="text" placeholder="Scrivi un messaggio" v-model="message" @keyup.enter="sendMessage()">
             <span><i class="fa fa-microphone" aria-hidden="true"></i></span>
           </div>
 
