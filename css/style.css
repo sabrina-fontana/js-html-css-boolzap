@@ -147,6 +147,21 @@
   background-color: #eaeaea;
 }
 
+.friend-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.last-message-timestamp {
+  font-size: 11px;
+}
+
+.last-message {
+  color: #6d7275;
+  font-size: 13px;
+  word-break: break-all;
+}
+
 .chat-container {
   width: 65%;
   min-height: 210px;
@@ -162,7 +177,7 @@
 }
 
 .user-message, .friend-message {
-  word-wrap: break-word;
+  word-break: break-all;
   border-radius: 10px;
   padding: 8px 8px 4px 8px;
   min-width: 150px;

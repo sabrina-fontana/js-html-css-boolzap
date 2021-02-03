@@ -158,6 +158,14 @@ methods: {
       element.visible = true;
     });
 
+  },
+  lastMessage: function(contact) {
+    let date = contact.messages[contact.messages.length - 1].date;
+    return date.slice(11, 16);
+  },
+  lastMessageTimestamp: function(contact) {
+    return contact.messages[contact.messages.length - 1].text;
+
   }
 }
 });

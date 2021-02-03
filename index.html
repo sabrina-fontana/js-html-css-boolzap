@@ -45,7 +45,13 @@
             <!-- stampa il div solo se il contatto è visibile -->
             <div class="friend bold" v-for="(contact, index) in contacts" v-if="(contact.visible === true)" @click="changeChat(index)">
               <img class="avatar-img" :src="'img/avatar' + contact.avatar + '.jpg'" alt="">
+              <div class="friend-info">
               {{contact.name}}
+              <div class="last-message">
+                <div class="last-message-timestamp">{{lastMessage(contact)}}</div>
+                <div>{{lastMessageTimestamp(contact)}}</div>
+              </div>
+            </div>
             </div>
           </div>
 
