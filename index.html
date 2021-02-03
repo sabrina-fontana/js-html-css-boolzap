@@ -39,7 +39,7 @@
           </div>
 
           <div class="search-friend">
-            <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchInput" @keyup.enter="searchFriend" @input="filterFriend">
+            <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchInput" @keyup.enter="searchFriend" @keyup="filterFriend">
           </div>
           <div class="friends-list">
             <!-- stampa il div solo se il contatto è visibile -->

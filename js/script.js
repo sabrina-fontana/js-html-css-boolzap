@@ -102,6 +102,7 @@ methods: {
     return date;
   },
   sendMessage: function() {
+    // creo un nuovo oggetto che pusho nell'array dei messaggi
     const newMessage = {date: this.currentDate(), text: this.message, status: 'sent'};
     this.contacts[this.currentContactIndex].messages.push(newMessage);
     // salvo il valore di message in una costante prima che venga cancellato
@@ -129,6 +130,7 @@ methods: {
     // messaggi del contatto attivo (currentContactIndex)
     const messages = this.contacts[index].messages;
     // ritorna la data dell'ultimo messaggio
+    // se c'è ancora almeno un messaggio mostro la data, altrimenti non scrivo nulla
     const lastMessageIndex = messages.length - 1;
     if (lastMessageIndex >= 0) {
       return messages[lastMessageIndex].date;
@@ -136,10 +138,8 @@ methods: {
       return '';
     }
   },
-  changeFriendsList: function() {
-      console.log(this.friendName)
-  },
   searchFriend: function() {
+    // se il nome del contatto è uguale a quanto scritto nell'input, all'invio apro la chat
     this.contacts.forEach((element, index) => {
       if (this.searchInput.toLowerCase() === element.name.toLowerCase()) {
         this.currentContactIndex = index;
@@ -166,6 +166,7 @@ methods: {
   },
   lastMessageTimestamp: function(contact) {
     const lastMessageIndex = contact.messages.length - 1;
+    // se c'è ancora almeno un messaggio mostro l'ora, altrimenti non scrivo nulla
     if (lastMessageIndex >= 0) {
       return contact.messages[lastMessageIndex].date.slice(11, 16);
     } else {
@@ -174,6 +175,7 @@ methods: {
   },
   lastMessage: function(contact) {
     const lastMessageIndex = contact.messages.length - 1;
+    // se c'è ancora almeno un messaggio mostro il testo, altrimenti non scrivo nulla
     if (lastMessageIndex >= 0) {
       return contact.messages[lastMessageIndex].text;
     } else {
