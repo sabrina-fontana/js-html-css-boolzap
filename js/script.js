@@ -129,7 +129,12 @@ methods: {
     // messaggi del contatto attivo (currentContactIndex)
     const messages = this.contacts[index].messages;
     // ritorna la data dell'ultimo messaggio
-    return messages[messages.length - 1].date;
+    const lastMessageIndex = messages.length - 1;
+    if (lastMessageIndex >= 0) {
+      return messages[lastMessageIndex].date;
+    } else {
+      return '';
+    }
   },
   changeFriendsList: function() {
       console.log(this.friendName)
@@ -159,13 +164,27 @@ methods: {
     });
 
   },
-  lastMessage: function(contact) {
-    let date = contact.messages[contact.messages.length - 1].date;
-    return date.slice(11, 16);
-  },
   lastMessageTimestamp: function(contact) {
-    return contact.messages[contact.messages.length - 1].text;
-
+    const lastMessageIndex = contact.messages.length - 1;
+    if (lastMessageIndex >= 0) {
+      return contact.messages[lastMessageIndex].date.slice(11, 16);
+    } else {
+      return '';
+    }
+  },
+  lastMessage: function(contact) {
+    const lastMessageIndex = contact.messages.length - 1;
+    if (lastMessageIndex >= 0) {
+      return contact.messages[lastMessageIndex].text;
+    } else {
+      return '';
+    }
+  },
+  deleteMessage: function(message) {
+    const index = this.currentContactIndex;
+    this.contacts[index].messages = this.contacts[index].messages.filter((element) => {
+      return element !== message;
+    })
   }
 }
 });

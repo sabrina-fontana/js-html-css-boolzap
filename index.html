@@ -78,6 +78,12 @@
             <!-- classe user-message se il messaggio è inviato, classe friend-message se il messaggio è ricevuto -->
             <div v-for="message in contacts[currentContactIndex].messages" :class="message.status === 'sent' ? 'user-message' : 'friend-message'">
               {{message.text}}
+              <div class="angle-down-icon"><i class="fa fa-angle-down" aria-hidden="true"></i>
+                <div class="dropdown-message">
+                  <div>Message info</div>
+                  <div @click="deleteMessage(message)">Delete message</div>
+                </div>
+              </div>
               <div class="timestamp">{{message.date}}</div>
             </div>
 
