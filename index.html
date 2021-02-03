@@ -39,10 +39,11 @@
           </div>
 
           <div class="search-friend">
-            <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="friendName" @keyup.enter="searchFriend">
+            <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchInput" @keyup.enter="searchFriend" @input="filterFriend">
           </div>
           <div class="friends-list">
-            <div class="friend bold" v-for="(contact, index) in contacts" @click="changeChat(index)">
+            <!-- stampa il div solo se il contatto è visibile -->
+            <div class="friend bold" v-for="(contact, index) in contacts" v-if="(contact.visible === true)" @click="changeChat(index)">
               <img class="avatar-img" :src="'img/avatar' + contact.avatar + '.jpg'" alt="">
               {{contact.name}}
             </div>

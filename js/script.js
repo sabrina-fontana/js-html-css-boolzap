@@ -2,8 +2,9 @@ var app = new Vue({
 el: '#root',
 data: {
     currentContactIndex: 0,
-    friendName: '',
+    searchInput: '',
     message: '',
+    writtenMessage: '',
     contacts: [
   	{
   		name: 'Michele',
@@ -93,31 +94,36 @@ data: {
 methods: {
   changeChat: function(index) {
     this.currentContactIndex = index;
+    this.cleanInput()
+  },
+  currentDate: function() {
+    let date = new Date().toLocaleString('en-GB');
+    date = date.replace(',', '');
+    return date;
   },
   sendMessage: function() {
-    let date = new Date().toLocaleString('en-GB', { timeZone:'UTC'});
-    const newMessage = {date: date, text: this.message, status: 'sent'};
+    const newMessage = {date: this.currentDate(), text: this.message, status: 'sent'};
     this.contacts[this.currentContactIndex].messages.push(newMessage);
-    const contacts = this.contacts;
-    const currentIndex = this.currentContactIndex;
-    const message = this.message;
+    // salvo il valore di message in una costante prima che venga cancellato
+    writtenMessage = this.message;
+    let that = this;
     setTimeout(function() {
-      // riassegno a date il valore aggiornato (altrimenti resta indietro di 1000ms)
-      date = new Date().toLocaleString('en-GB', { timeZone:'UTC'});
-      function responseText() {
-        if (message.includes('ciao')) {
-          return 'ciao'
-        } else if (message.includes('?')) {
-          return 'Non lo so'
-        } else {
-          return 'ok'
-        }
-      };
-       const responseMessage = {date: date, text: responseText(), status: 'received'};
-       contacts[currentIndex].messages.push(responseMessage);
+      that.autoReply()
      }, 1000);
-
      this.message= '';
+  },
+  autoReply: function() {
+    function autoText() {
+      if (writtenMessage.includes('ciao')) {
+        return 'ciao'
+      } else if (writtenMessage.includes('?')) {
+        return 'Non lo so'
+      } else {
+        return 'ok'
+      }
+    };
+     const autoReply = {date: this.currentDate(), text: autoText(), status: 'received'};
+     this.contacts[this.currentContactIndex].messages.push(autoReply);
   },
   lastAccess: function(index) {
     // messaggi del contatto attivo (currentContactIndex)
@@ -125,13 +131,33 @@ methods: {
     // ritorna la data dell'ultimo messaggio
     return messages[messages.length - 1].date;
   },
+  changeFriendsList: function() {
+      console.log(this.friendName)
+  },
   searchFriend: function() {
     this.contacts.forEach((element, index) => {
-      if (this.friendName.toLowerCase() === element.name.toLowerCase()) {
+      if (this.searchInput.toLowerCase() === element.name.toLowerCase()) {
         this.currentContactIndex = index;
       }
     });
-    this.friendName = '';
+    this.searchInput = '';
+  },
+  filterFriend: function() {
+    // ciclo tutti i contatti. Se il nome di un contatto inizio con le lettere scritte nell'input allora ha visible=true, altrimenti ha visible=false
+    this.contacts.forEach((element) => {
+      if (element.name.toLowerCase().startsWith(this.searchInput.toLowerCase())) {
+        element.visible = true;
+      } else {
+        element.visible = false;
+      }
+    });
+  },
+  cleanInput: function() {
+    this.searchInput = '';
+    this.contacts.forEach((element) => {
+      element.visible = true;
+    });
+
   }
 }
 });
