@@ -138,7 +138,7 @@ methods: {
       return '';
     }
   },
-  searchFriend: function() {
+  searchContact: function() {
     // se il nome del contatto è uguale a quanto scritto nell'input, all'invio apro la chat
     this.contacts.forEach((element, index) => {
       if (this.searchInput.toLowerCase() === element.name.toLowerCase()) {
@@ -147,7 +147,7 @@ methods: {
     });
     this.searchInput = '';
   },
-  filterFriend: function() {
+  filterContacts: function() {
     // ciclo tutti i contatti. Se il nome di un contatto inizio con le lettere scritte nell'input allora ha visible=true, altrimenti ha visible=false
     this.contacts.forEach((element) => {
       if (element.name.toLowerCase().startsWith(this.searchInput.toLowerCase())) {
