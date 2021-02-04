@@ -129,23 +129,11 @@ methods: {
   lastAccess: function(index) {
     // messaggi del contatto attivo (currentContactIndex)
     const messages = this.contacts[index].messages;
-    // ritorna la data dell'ultimo messaggio
-    // se c'è ancora almeno un messaggio mostro la data, altrimenti non scrivo nulla
-    const lastMessageIndex = messages.length - 1;
-    if (lastMessageIndex >= 0) {
-      return messages[lastMessageIndex].date;
-    } else {
+    // se non ci sono più messaggi non ritorna nulla, altrimenti ritorna la data dell'ultimo messaggio
+    if(messages.length === 0) {
       return '';
     }
-  },
-  searchContact: function() {
-    // se il nome del contatto è uguale a quanto scritto nell'input, all'invio apro la chat
-    this.contacts.forEach((element, index) => {
-      if (this.searchInput.toLowerCase() === element.name.toLowerCase()) {
-        this.currentContactIndex = index;
-      }
-    });
-    this.searchInput = '';
+    return messages[messages.length - 1].date;
   },
   filterContacts: function() {
     // ciclo tutti i contatti. Se il nome di un contatto inizio con le lettere scritte nell'input allora ha visible=true, altrimenti ha visible=false
@@ -165,22 +153,18 @@ methods: {
 
   },
   lastMessageTimestamp: function(contact) {
-    const lastMessageIndex = contact.messages.length - 1;
-    // se c'è ancora almeno un messaggio mostro l'ora, altrimenti non scrivo nulla
-    if (lastMessageIndex >= 0) {
-      return contact.messages[lastMessageIndex].date.slice(11, 16);
-    } else {
+    // se non ci sono più messaggi non ritorna nulla, altrimenti ritorna la data dell'ultimo messaggio
+    if(contact.messages.length === 0) {
       return '';
     }
+    return contact.messages[contact.messages.length - 1].date.slice(11, 16);
   },
   lastMessage: function(contact) {
-    const lastMessageIndex = contact.messages.length - 1;
-    // se c'è ancora almeno un messaggio mostro il testo, altrimenti non scrivo nulla
-    if (lastMessageIndex >= 0) {
-      return contact.messages[lastMessageIndex].text;
-    } else {
+    // se non ci sono più messaggi non ritorna nulla, altrimenti ritorna il testo dell'ultimo messsaggio
+    if(contact.messages.length === 0) {
       return '';
     }
+    return contact.messages[contact.messages.length - 1].text;
   },
   deleteMessage: function(message) {
     const index = this.currentContactIndex;

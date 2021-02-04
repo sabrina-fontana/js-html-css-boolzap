@@ -218,7 +218,7 @@
 .dropdown-message {
   background: white;
   color: black;
-  max-width: 150px;
+  min-width: 140px;
   font-size: 13px;
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 0px 4px 0px, rgba(0, 0, 0, 0.08) 0px 8px 16px 0px;
