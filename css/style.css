@@ -228,7 +228,7 @@
   display: none;
 }
 
-.angle-down-icon:hover .dropdown-message {
+.active {
   display: block;
 }
 

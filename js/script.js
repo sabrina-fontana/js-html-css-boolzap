@@ -187,6 +187,10 @@ methods: {
     this.contacts[index].messages = this.contacts[index].messages.filter((element) => {
       return element !== message;
     })
+  },
+  showMenu: function(index) {
+    let dropdownMenu = document.getElementsByClassName('dropdown-message')[index];
+    dropdownMenu.classList.toggle('active');
   }
 }
 });

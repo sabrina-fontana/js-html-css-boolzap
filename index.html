@@ -78,9 +78,9 @@
           <div class="main-chat">
             <!-- un div per ogni messaggio del contatto con il currentContactIndex -->
             <!-- classe user-message se il messaggio è inviato, classe friend-message se il messaggio è ricevuto -->
-            <div v-for="message in contacts[currentContactIndex].messages" :class="message.status === 'sent' ? 'user-message' : 'contact-message'">
+            <div v-for="(message, index) in contacts[currentContactIndex].messages" :class="message.status === 'sent' ? 'user-message' : 'contact-message'">
               {{message.text}}
-              <div class="angle-down-icon"><i class="fa fa-angle-down" aria-hidden="true"></i>
+              <div class="angle-down-icon" @click="showMenu(index)"><i class="fa fa-angle-down" aria-hidden="true"></i>
                 <div class="dropdown-message">
                   <div>Message info</div>
                   <div @click="deleteMessage(message)">Delete message</div>
