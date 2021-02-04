@@ -66,7 +66,7 @@ data: {
   				status: 'sent'
   			},
   			{
-  				date: '28/03/2020 16:15:22',
+          date: '28/03/2020 16:15:22',
   				text: 'Ah scusa!',
   				status: 'received'
   			}
@@ -83,7 +83,7 @@ data: {
   				status: 'sent'
   			},
   			{
-  				date: '10/01/2020 15:50:00',
+  				date: '12/01/2020 15:50:00',
   				text: 'Si, ma preferirei andare al cinema',
   				status: 'received'
   			}
@@ -97,8 +97,7 @@ methods: {
     this.cleanInput()
   },
   currentDate: function() {
-    let date = new Date().toLocaleString('en-GB');
-    date = date.replace(',', '');
+    let date = dayjs().format('DD/MM/YYYY HH:mm:ss');
     return date;
   },
   sendMessage: function() {
@@ -157,7 +156,8 @@ methods: {
     if(contact.messages.length === 0) {
       return '';
     }
-    return contact.messages[contact.messages.length - 1].date.slice(11, 16);
+
+    return dayjs(contact.messages[contact.messages.length - 1].date).format('HH:mm');
   },
   lastMessage: function(contact) {
     // se non ci sono più messaggi non ritorna nulla, altrimenti ritorna il testo dell'ultimo messsaggio
